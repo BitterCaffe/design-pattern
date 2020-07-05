@@ -58,7 +58,9 @@ public class ChainInterceptInMethod {
         class NotNullChain {
             List<AbstractIntercept> intercepts = new ArrayList<>();
 
-            {
+            /**
+             * 这里使用了类的代码块来关联拦截器和链的关系，所以一定要注意拦截器集合、代码块的先后顺序即<init>方法中执行顺序
+             */ {
                 new NotNullIntercept();
                 new NotEmptyIntercept();
                 sort();
