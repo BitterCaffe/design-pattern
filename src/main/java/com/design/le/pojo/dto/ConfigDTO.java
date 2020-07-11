@@ -1,11 +1,14 @@
 package com.design.le.pojo.dto;
 
+import lombok.ToString;
+
 /**
  * @author Caffe
  * @date 2020/7/5
  * @description: TODO
  */
 
+@ToString
 public class ConfigDTO {
     private Integer id;
 
