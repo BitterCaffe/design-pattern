@@ -19,29 +19,6 @@ import java.util.List;
  */
 public class ChainInterceptInMethod {
 
-    public static void main(String[] args) {
-        ChainInterceptInMethod chainInterceptInMethod = new ChainInterceptInMethod();
-        //无值
-        boolean result = chainInterceptInMethod.judgeNull(new ConfigDTO());
-        System.out.println("judge result:" + result);
-
-        //有值(相关参数)
-        ConfigDTO configDTO = new ConfigDTO();
-        configDTO.setSkuId(1);
-        configDTO.setCityName("cityName");
-        configDTO.setSupplierId(1);
-        boolean result1 = chainInterceptInMethod.judgeNull(configDTO);
-        System.out.println("judge result1:" + result1);
-
-        /************************  无参   **********************/
-        boolean result11 = chainInterceptInMethod.judgeNullV1(new ConfigDTO());
-        boolean result12 = chainInterceptInMethod.judgeNullV1(configDTO);
-        System.out.println("result11: " + result11 + " result12: " + result12);
-
-
-    }
-
-
     /**
      * 判断方法参数中必填项是否为空
      * 这里的参数问题，按理说局部内部类使用形参要求参数为final的，因为有可能随着内部类逃离他的有效作用范围，
@@ -50,7 +27,7 @@ public class ChainInterceptInMethod {
      * @param config
      * @return
      */
-    boolean judgeNull(ConfigDTO config) {
+    public boolean judgeNull(ConfigDTO config) {
 
         /**
          * 局部内部类
@@ -165,7 +142,7 @@ public class ChainInterceptInMethod {
      * @param configDTO
      * @return
      */
-    boolean judgeNullV1(ConfigDTO configDTO) {
+    public boolean judgeNullV1(ConfigDTO configDTO) {
 
         /**
          * 局部内部类
