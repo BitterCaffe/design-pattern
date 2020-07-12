@@ -16,9 +16,9 @@ public class ChainTest {
         // 使用内部类但是逃逸分析失败
 //        new ChainTest().escapeAnalysis();
         // 使用内部类逃逸分析成功
-        new ChainTest().escapeAnalysisV1();
+//        new ChainTest().escapeAnalysisV1();
         // 直接在方法中做判断
-//        new ChainTest().escapeAnalysisV2();
+        new ChainTest().escapeAnalysisV2();
 
 
     }
@@ -113,7 +113,7 @@ public class ChainTest {
 
     /**
      * 和内部类逃逸分析做比较
-     * 2138、2060、2086、2167
+     * 2138、2060、2086、2167、2685、2669
      */
     public void escapeAnalysisV2() {
         int count = 1000000000;
@@ -122,6 +122,8 @@ public class ChainTest {
         configDTO.setSupplierId(1);
         Integer sku = configDTO.getSkuId();
         Integer supplierId = configDTO.getSupplierId();
+        String cityName = "cityName";
+        String wareHouseName = "houseName";
 
         long begin = System.currentTimeMillis();
         for (int i = 0; i < count; i++) {
@@ -129,6 +131,7 @@ public class ChainTest {
                 configDTO.setSkuId(null);
             }
             boolean flag = (null != sku && null != supplierId);
+            boolean flag1 = (null != cityName && null != wareHouseName);
         }
         long end = System.currentTimeMillis();
         System.out.println(end - begin);
