@@ -142,7 +142,7 @@ public class ChainInterceptInMethod {
      * @param configDTO
      * @return
      */
-    public boolean judgeNullV1(ConfigDTO configDTO) {
+    public static boolean judgeNullV1(ConfigDTO configDTO) {
 
         /**
          * 局部内部类
@@ -234,6 +234,60 @@ public class ChainInterceptInMethod {
             }
 
         }
+        // 局部内部类实现拦截器
+        NotNullChain notNullChain = new NotNullChain();
+        boolean flag = notNullChain.chain();
+        return flag;
+    }
+
+    /**
+     * 逃逸分析，对象被分配在栈内存
+     *
+     * @param configDTO
+     * @return
+     */
+    public static boolean judgeNullV2(ConfigDTO configDTO) {
+
+        Integer sku = configDTO.getSkuId();
+        Integer supplierId = configDTO.getSupplierId();
+        String cityName = configDTO.getCityName();
+        String warehouseName = configDTO.getWarehouseName();
+
+        /**
+         * 拦截器
+         */
+        class ParamIntercept {
+            boolean preHandler() {
+                boolean flag = (null != sku && null != supplierId);
+                return flag;
+            }
+        }
+
+        /**
+         * 拦截器
+         */
+        class ParamNullIntercept {
+            boolean preHandler() {
+                boolean flag = (null != cityName && null != warehouseName);
+                return flag;
+            }
+        }
+        /**
+         * 局部内部类
+         */
+        class NotNullChain {
+            /**
+             * 拦截器链
+             * @return
+             */
+            boolean chain() {
+                boolean flag1 = new ParamIntercept().preHandler();
+                boolean flag2 = new ParamNullIntercept().preHandler();
+                return flag1 & flag2;
+            }
+
+        }
+
         // 局部内部类实现拦截器
         NotNullChain notNullChain = new NotNullChain();
         boolean flag = notNullChain.chain();
