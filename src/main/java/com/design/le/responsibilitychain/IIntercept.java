@@ -10,7 +10,7 @@ import com.design.le.pojo.dto.ConfigDTO;
 public interface IIntercept {
 
     /**
-     * pre handler  true 业务中断  false 业务继续
+     * pre handler  false 业务中断  true 业务继续
      *
      * @param configDTO
      * @return

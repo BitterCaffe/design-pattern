@@ -22,7 +22,7 @@ public class ChainTest {
         configDTO.setCityName("cityName");
         configDTO.setSupplierId(1);
         boolean result = DefaultChainFactory.interceptChain(configDTO);
-        System.out.println(result);
+        System.out.println("result:" + result);
     }
 
     /**
@@ -30,22 +30,12 @@ public class ChainTest {
      */
     public static void chainInMethodTest() {
         ChainInterceptInMethod chainInterceptInMethod = new ChainInterceptInMethod();
-        //无值
-        boolean result = chainInterceptInMethod.judgeNull(new ConfigDTO());
-        System.out.println("judge result:" + result);
-
-        //有值(相关参数)
         ConfigDTO configDTO = new ConfigDTO();
         configDTO.setSkuId(1);
         configDTO.setCityName("cityName");
         configDTO.setSupplierId(1);
-        boolean result1 = chainInterceptInMethod.judgeNull(configDTO);
-        System.out.println("judge result1:" + result1);
-
-        /************************  无参   **********************/
-        boolean result11 = chainInterceptInMethod.judgeNullV1(new ConfigDTO());
         boolean result12 = chainInterceptInMethod.judgeNullV1(configDTO);
-        System.out.println("result11: " + result11 + " result12: " + result12);
+        System.out.println("result12: " + result12);
     }
 
 }

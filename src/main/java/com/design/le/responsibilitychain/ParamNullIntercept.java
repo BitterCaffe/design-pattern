@@ -18,7 +18,9 @@ public class ParamNullIntercept implements IIntercept {
 
     @Override
     public boolean preHandler(ConfigDTO configDTO) {
-        return true;
+        boolean flag = (configDTO.getSkuId() != null
+                && configDTO.getSupplierId() != null);
+        return flag;
     }
 
     @Override

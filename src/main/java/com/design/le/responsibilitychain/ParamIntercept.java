@@ -19,7 +19,9 @@ public final class ParamIntercept implements IIntercept {
 
     @Override
     public boolean preHandler(ConfigDTO configDTO) {
-        return false;
+        boolean flag = (null != configDTO.getWarehouseName()
+                && null != configDTO.getCityName());
+        return flag;
     }
 
     @Override

@@ -10,6 +10,7 @@ import lombok.ToString;
 
 @ToString
 public class ConfigDTO {
+    
     private Integer id;
 
     private Integer status;

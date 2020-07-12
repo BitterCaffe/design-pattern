@@ -164,11 +164,11 @@ public class ChainInterceptInMethod {
 
                 for (AbstractIntercept intercept : intercepts) {
                     boolean flag = intercept.preHandler();
-                    if (!flag) {
-                        return false;
+                    if (flag) {
+                        return true;
                     }
                 }
-                return true;
+                return false;
             }
 
             /**
@@ -213,12 +213,9 @@ public class ChainInterceptInMethod {
                 @Override
                 boolean preHandler() {
                     boolean flag = (configDTO.getSkuId() != null
-                            || configDTO.getSupplierId() != null);
+                            && configDTO.getSupplierId() != null);
 
-                    if (flag) {
-                        return false;
-                    }
-                    return true;
+                    return flag;
                 }
             }
 
@@ -231,12 +228,8 @@ public class ChainInterceptInMethod {
                 @Override
                 boolean preHandler() {
                     boolean flag = (null != configDTO.getWarehouseName()
-                            || null != configDTO.getCityName());
-
-                    if (flag) {
-                        return false;
-                    }
-                    return true;
+                            && null != configDTO.getCityName());
+                    return flag;
                 }
             }
 
