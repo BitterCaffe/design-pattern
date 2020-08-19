@@ -1,6 +1,6 @@
-import com.design.le.pojo.dto.ConfigDTO;
-import com.design.le.responsibilitychain.ChainInterceptInMethod;
-import com.design.le.responsibilitychain.DefaultChainFactory;
+import com.caffe.design.pattern.pojo.dto.ConfigDTO;
+import com.caffe.design.pattern.responsibilitychain.ChainInterceptInMethod;
+import com.caffe.design.pattern.responsibilitychain.DefaultChainFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +38,7 @@ public class ChainTest {
         boolean result = DefaultChainFactory.interceptChain(configDTO);
         System.out.println("result:" + result);
         long begin = System.currentTimeMillis();
-        int count = 1000000000;
+        int count = 100000;
         for (int i = 0; i < count; i++) {
             DefaultChainFactory.interceptChain(configDTO);
             TimeUnit.MILLISECONDS.sleep(10);

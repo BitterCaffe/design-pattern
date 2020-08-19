@@ -1,4 +1,4 @@
-package com.design.le.responsibilitychain;
+package com.caffe.design.pattern.responsibilitychain;
 
 /**
  * @author Caffe

@@ -1,4 +1,4 @@
-package com.design.le.pojo.dto;
+package com.caffe.design.pattern.pojo.dto;
 
 import lombok.ToString;
 

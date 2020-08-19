@@ -1,6 +1,6 @@
-package com.design.le.responsibilitychain;
+package com.caffe.design.pattern.responsibilitychain;
 
-import com.design.le.pojo.dto.ConfigDTO;
+import com.caffe.design.pattern.pojo.dto.ConfigDTO;
 
 /**
  * @author Caffe

@@ -1,7 +1,7 @@
-package com.design.le.responsibilitychain;
+package com.caffe.design.pattern.responsibilitychain;
 
-import com.design.le.annotation.InterceptAnnotation;
-import com.design.le.pojo.dto.ConfigDTO;
+import com.caffe.design.pattern.annotation.InterceptAnnotation;
+import com.caffe.design.pattern.pojo.dto.ConfigDTO;
 
 import java.util.ArrayList;
 import java.util.Comparator;

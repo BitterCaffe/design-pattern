@@ -1,4 +1,4 @@
-package com.design.le.pojo;
+package com.caffe.design.pattern.pojo;
 
 /**
  * @author Caffe
