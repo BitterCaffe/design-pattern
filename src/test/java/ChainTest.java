@@ -2,15 +2,17 @@ import com.design.le.pojo.dto.ConfigDTO;
 import com.design.le.responsibilitychain.ChainInterceptInMethod;
 import com.design.le.responsibilitychain.DefaultChainFactory;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author Caffe
  * @date 2020/7/11
  * @description: TODO
  */
 public class ChainTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //使用外部类实现拦截器
-//        new ChainTest().chainTest();
+        new ChainTest().chainTest();
         //使用内部类但是逃逸分析失败
 //        new ChainTest().chainInMethodTest();
         // 使用内部类但是逃逸分析失败
@@ -18,7 +20,7 @@ public class ChainTest {
         // 使用内部类逃逸分析成功
 //        new ChainTest().escapeAnalysisV1();
         // 直接在方法中做判断
-        new ChainTest().escapeAnalysisV2();
+//        new ChainTest().escapeAnalysisV2();
 
 
     }
@@ -28,7 +30,7 @@ public class ChainTest {
      * server模式下jit默认阀值10000所以我们这里实行100000次来比较
      * 14223、14065
      */
-    public void chainTest() {
+    public void chainTest() throws InterruptedException {
         ConfigDTO configDTO = new ConfigDTO();
         configDTO.setSkuId(1);
         configDTO.setCityName("cityName");
@@ -39,6 +41,7 @@ public class ChainTest {
         int count = 1000000000;
         for (int i = 0; i < count; i++) {
             DefaultChainFactory.interceptChain(configDTO);
+            TimeUnit.MILLISECONDS.sleep(10);
         }
         long end = System.currentTimeMillis();
         System.out.println(end - begin);
@@ -136,4 +139,5 @@ public class ChainTest {
         long end = System.currentTimeMillis();
         System.out.println(end - begin);
     }
+
 }
